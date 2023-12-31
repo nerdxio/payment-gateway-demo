@@ -16,14 +16,7 @@ import org.springframework.web.client.RestTemplate;
 @RequestMapping("payment")
 public class PaymentController {
 
-//    @Value("${paymob.apiKey}")
-//    private String apiKey;
-//
-//    @Value("${paymob.baseUrl}")
-//    private String baseUrl;
-//
-//    @Value("${paymob.integrationId}")
-//    private String integrationId;
+
 
     private final PaymentService paymentService;
 

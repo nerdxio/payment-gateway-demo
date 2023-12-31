@@ -1,17 +1,20 @@
 package io.nerd.paymentgatewaydemo.payemnt;
 
 import io.nerd.paymentgatewaydemo.dto.*;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 @Service
 public class PaymentService {
-
+    @Value("${paymob.apiKey}")
+    private String apiKey;
+    @Value("${paymob.integrationId}")
+    private String integrationId;
     private final RestClient restClient;
 
     public PaymentService(RestClient restClient) {
@@ -27,7 +30,7 @@ public class PaymentService {
     }
 
     String getTokens() {
-        var input = new TokenInput("ZXlKaGJHY2lPaUpJVXpVeE1pSXNJblI1Y0NJNklrcFhWQ0o5LmV5SmpiR0Z6Y3lJNklrMWxjbU5vWVc1MElpd2ljSEp2Wm1sc1pWOXdheUk2T1RRNE56YzRMQ0p1WVcxbElqb2lhVzVwZEdsaGJDSjkuX0FYUjQ1UURGQzdWS0thNzVPd2JXMHVobHJaU3ZvSW1KdE1wclp5Nkd6c1VUWWhtODRWanExTTZWOTdFVGdCRm9ya3lhOXBfeGxHdlNXMW9iUFhibkE=");
+        var input = new TokenInput(apiKey);
 
         ResponseEntity<UserProfile> entity = restClient
                 .post()
@@ -66,7 +69,7 @@ public class PaymentService {
 
         var input = new GetPaymentKeyInput(
                 token,
-                "400",
+                STR."\{(int) (Math.random() * 1000)}",
                 3600,
                 STR."\{orderId}",
                 new BillingData(
@@ -85,7 +88,7 @@ public class PaymentService {
                         "Utah"
                 ),
                 "EGP",
-                4423527,
+                Integer.parseInt(integrationId),
                 "false"
         );
 
