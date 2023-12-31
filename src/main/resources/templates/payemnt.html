@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Payment</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .card {
+            border: 1px solid #ccc;
+            padding: 20px;
+            text-align: center;
+            max-width: 300px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .pay-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+<!--<h1>This is a demo to show how to integrate with Payment Gateway</h1>-->
+<div class="card">
+    <!-- Card Content -->
+    <h2>Our Service</h2>
+    <p>Card details and description go here.</p>
+
+    <!-- Pay Button -->
+    <a th:href="${url}"
+       class="pay-button">Pay Our Service</a>
+</div>
+<!--<h1 th:text="${token}"></h1>-->
+</body>
+</html>
